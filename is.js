@@ -4,6 +4,7 @@ var consts = require('./consts');
 const THIRTEEN = consts.THIRTEEN;
 const THIRTEEN_FUZZ = consts.THIRTEEN_FUZZ;
 const thirteenStrings = consts.thirteenStrings;
+const thirteenFOST = consts.thirteenFOST;
 
 'use strict';
 
@@ -11,6 +12,15 @@ const thirteenStrings = consts.thirteenStrings;
  * @param n {number} The number to compare but also sometimes not a number but not not !NaN
  * @returns {object}
  */
+function arrEqual(a,b){//function that check if 2 arrays is equal
+  if(a===b)return true;
+  if(!Array.isArray(a) || !Array.isArray(b))return false;
+  if(a.length!==b.length)return false;
+  for(var i=0;i<a.length;i++){
+    if(!arrEqual(a[i],b[i]))return false;
+  }
+  return true;
+}
 var is = function is(x) {
     // the next line calls the noop function
     noop();
@@ -38,7 +48,9 @@ var is = function is(x) {
             x = THIRTEEN;
         }
     }
-
+    else if(arrEqual(x,thirteenFOST)){
+      x=THIRTEEN
+    }
     return {
         thirteen: function() {
             return x == THIRTEEN;
