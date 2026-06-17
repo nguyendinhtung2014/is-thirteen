@@ -48,7 +48,7 @@ var is = function is(x) {
         }
     }
     else if(arrEqual(x,thirteenFOST)){
-      c=THIRTEEN
+      x=THIRTEEN
     }
     return {
         thirteen: function() {
